@@ -1,0 +1,30 @@
+<header class="databox__header">
+    {{::stage.title | limitTo: 30}}
+</header>
+
+<div class="databox__body">
+
+
+    <datalist
+            data="datasets"
+            property="settings.stages.property.name"
+            value="stage.title"
+            group-by="settings.groups.property.name"
+            readonly="settings.readonly">
+
+    </datalist>
+
+</div>
+
+<footer class="databox__footer databox__footer--fixed">
+
+    <button class="link-button" ng-click="addDataset(stage.key)">
+        <span class="link-button__label">Add a team</span>
+    </button>
+
+    <button class="link-button" ng-click="addDataset(stage.key)">
+        <span class="link-button__label">Add an employee</span>
+    </button>
+
+
+</footer>

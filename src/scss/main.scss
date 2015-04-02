@@ -1,0 +1,19 @@
+@import 'settings';
+@import 'modules/body';
+@import 'modules/board';
+@import 'modules/header';
+@import 'modules/html';
+@import 'modules/main';
+@import 'components/databox';
+@import 'components/datalist';
+@import 'components/datagroup';
+@import 'components/dataset';
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  font-family: Open Sans, Arial, Helvetica, sans-serif;
+}
+

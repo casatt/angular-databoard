@@ -1,0 +1,22 @@
+$color-text-default: #3f4d5a;
+$color-text-highlight: #1c5f93;
+
+$color-border-default: #dce4e6;
+
+$default-border-radius: 3px;
+$default-box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+$dataset-state-colors: (
+        default : #fff,
+        error : rgba(242, 222, 222, 1),
+        yellow: #ffef60,
+        red : #ff0000,
+        green: #559d3d,
+);
+
+$z-stack: (
+        stage : 500,
+        loader: 600,
+        sidepanel :700,
+        messages: 1000
+);

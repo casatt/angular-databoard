@@ -1,0 +1,8 @@
+datagroup,
+.datagroup {
+  display: block;
+
+  &::before{
+    content: attr(data-group-name);
+  }
+}

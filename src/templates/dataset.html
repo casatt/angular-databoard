@@ -1,0 +1,26 @@
+<div class="dataset"
+    draggable="true"
+    data-id="{{::data.id}}"
+    ng-dblclick=""
+    ng-class="getStatusClasses(data)">
+
+    <header class="dataset__header">
+    </header>
+
+    <div class="dataset__body">
+        <i class="fa" ng-class="{'fa-female' : data.gender === 'Female', 'fa-male' : data.gender === 'Male'}"></i>
+        {{::data.lastname}}, {{::data.firstname}}
+        ({{::data.age}})
+
+        <p>
+            {{data.email}} <br/>
+            {{data.phone}}
+        </p>
+    </div>
+
+    <footer class="dataset__footer">
+
+    </footer>
+
+
+</div>

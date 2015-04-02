@@ -1,0 +1,44 @@
+databox,
+.databox {
+
+  $background: #f1f5f6;
+  $width: 20em;
+
+  background: $background;
+  border: 1px solid $color-border-default;
+  border-radius: $default-border-radius;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-right: 1em;
+  position: relative;
+
+  // Last one needs no margin
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__header,
+  &__body,
+  &__footer {
+
+  }
+
+  &__header {
+    color: $color-text-default;
+    font-weight: bold;
+    padding: 1em 0 1em 0.7em;
+  }
+  &__body {
+    align-items: stretch;
+    display: flex;
+    flex-grow: 2;
+    padding: 1em;
+  }
+  &__footer {
+    padding: 1em 0 1em 0.7em;
+    margin: 1em 0 0 0;
+  }
+
+}
