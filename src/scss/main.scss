@@ -1,20 +1,20 @@
 @import 'settings';
-
 @import 'util/clearfix';
-
 @import 'modules/body';
 @import 'modules/board';
+@import 'modules/footer';
 @import 'modules/header';
 @import 'modules/html';
 @import 'modules/main';
-
 @import 'components/databox';
 @import 'components/datalist';
 @import 'components/datagroup';
 @import 'components/dataset';
+@import 'components/filterbar';
+@import 'components/loader';
 @import 'components/linkbutton';
+@import 'components/togglebutton';
 @import 'components/userprofile';
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 * {

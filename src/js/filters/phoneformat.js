@@ -16,7 +16,7 @@ angular.module('app')
 
             type = type || 'link';
 
-            switch (type) {
+            switch (type.toLowerCase()) {
                 default:
                 case 'link' :
                     return input.toString().replace(/[^0-9+]/g, '');

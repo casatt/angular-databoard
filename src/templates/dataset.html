@@ -1,44 +1,48 @@
-<div class="dataset"
+<div class="dataset user-profile"
      draggable="true"
      data-id="{{::data.id}}"
      ng-dblclick=""
      ng-class="getStatusClasses(data)">
 
     <header class="dataset__header">
+        <span class="user-profile__data__name user-profile__data__name"><i class="fa fa-user"></i> {{::data.lastname}}, {{::data.firstname}}</span>
     </header>
 
     <div class="dataset__body">
 
-
-        <div class="user-profile">
-            <div class="user-profile__picture user-profile__picture--empty">
+        <div class="user-profile__picture user-profile__picture--empty">
                 <span class="user-profile__picture__placeholder">
                     <i class="fa fa-user"></i>
                 </span>
-            </div>
+        </div>
 
-            <p class="user-profile__data">
-                <span class="user-profile__data__name">{{::data.lastname}}, {{::data.firstname}}</span>
+        <p class="user-profile__data">
+                <span class="user-profile__data__title">{{::data.title}}</span>
                 <span class="user-profile__data__gender">
                 <i class="fa"
                    ng-class="{'fa-female' : data.gender === 'Female', 'fa-male' : data.gender === 'Male'}"></i>
                     {{::data.gender}},
                 </span>
-                <span class="user-profile__data__age">{{::data.age}}</span>
-            </p>
+            <span class="user-profile__data__age">{{::data.age}}</span>
+        </p>
 
-            <p class="user-profile__contact">
-                <a ng-href="mailto:{{::data.email}}" class="user-profile__contact__email">{{::data.email}}</a>
-                <a ng-href="tel:{{::data.phone | phoneFormat : 'link'}}"
-                   class="user-profile__contact__phone">{{::data.phone}}</a>
-            </p>
-
-        </div>
+        <p class="user-profile__contact">
+            <a draggable="false"
+               ng-href="mailto:{{::data.email}}"
+               class="user-profile__contact__email">{{::data.email}}</a>
+            <a draggable="false"
+               ng-href="tel:{{::data.phone | phoneFormat : 'link'}}"
+               class="user-profile__contact__phone">{{::data.phone}}</a>
+        </p>
 
     </div>
 
     <footer class="dataset__footer">
-
+        <button class="link-button"
+                title="Remove from board"
+                ng-click="remove()">
+            <i class="fa fa-minus-square"></i>
+        </button>
     </footer>
 
 

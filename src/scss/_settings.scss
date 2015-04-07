@@ -8,6 +8,10 @@ $color-brighter: #DBDBDB;
 $color-brightest: #f7f5fc;
 
 $color-header-background: $color-darkest;
+$color-footer-background: $color-darkest;
+
+$color-highlight-darker: rgba(197, 165, 80, 0.47);
+$color-highlight-brighter: rgba(254, 213, 103, 0.47);
 
 $dataset-state-colors: (
         default : #fff,
@@ -24,3 +28,4 @@ $z-stack: (
 );
 
 $header-height: 2.4em;
+$footer-height: 2.4em;

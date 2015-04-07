@@ -1,5 +1,4 @@
 .user-profile {
-  @extend %clearfix;
   user-select: none;
 
   &__picture {
@@ -31,6 +30,9 @@
     margin: 0;
     &__name {
       font-size: 1.2em;
+
+    }
+    &__title {
       display: block;
       margin-bottom: 0.1em;
     }

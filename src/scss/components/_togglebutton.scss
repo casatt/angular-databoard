@@ -1,0 +1,21 @@
+.toggle-button {
+  appearance: none;
+  background: transparent;
+  border: 1px solid $color-medium;
+  border-radius: $default-border-radius;
+  color: $color-brightest;
+  cursor: pointer;
+
+  &.active {
+    background: $color-brightest;
+    color: $color-darker;
+  }
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+  &__label {
+
+  }
+}

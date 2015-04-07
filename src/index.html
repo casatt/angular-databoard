@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>angular-databoard</title>
     <link rel="stylesheet" href="css/main.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
@@ -12,20 +12,16 @@
       ng-init="init()">
 
 <header class="header">
-    <div class="filterbar">
-        Filter:
-
-        <button class="link-button" ng-click="addStage('Foo')">
-            <i class="fa fa-plus"></i>
-            <span class="link-button__label">Add a location</span>
-        </button>
-
-    </div>
-
+    <div class="filterbar" ng-include="'partials/filterbar.html'"></div>
 </header>
 
 <main>
-    <div class="board">
+
+    <div ng-if="state.isLoading" class="loader">
+        <i class="fa fa-spin fa-circle-o-notch"></i>
+    </div>
+
+    <div ng-if="!state.isLoading" class="board">
 
         <databox ng-repeat="stage in getStages() track by stage.key">
 
@@ -35,11 +31,20 @@
 </main>
 
 
+<footer class="footer">
+    <span ng-if="state.isLoading"><i class="fa fa-spin fa-circle-o-notch"></i> Loading...</span>
+    <span ng-if="state.isUpdating"><i class="fa fa-spin fa-circle-o-notch"></i> Updating...</span>
+</footer>
+
+
 <!-- build:js js/main.js -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/chance/chance.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/lodash/lodash.js"></script>
 <script src="js/app.js"></script>
+<script src="js/constants/datagroups.js"></script>
+<script src="js/constants/datastages.js"></script>
 <script src="js/controllers/databoardctrl.js"></script>
 <script src="js/directives/databox.js"></script>
 <script src="js/directives/datalist.js"></script>

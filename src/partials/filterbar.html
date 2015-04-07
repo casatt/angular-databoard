@@ -1,0 +1,51 @@
+<div class="filterbar__group">
+    <span class="filterbar__label">Quick Filter:</span>
+    <ul class="filterbar__list">
+
+        <!-- Toggle Filters -->
+        <li ng-repeat="filter in settings.filter | filter : { isSubfilter : '!true'}"
+            class="filterbar__list__item"
+            title="{{filter.description}}">
+            <button class="toggle-button"
+                    ng-disabled="state.isUpdating || state.isLoading"
+                    ng-class="{'active' : filter.active}"
+                    ng-click="filter.active = !filter.active">
+                <span class="toggle-button__label">{{::filter.label}}</span>
+            </button>
+        </li>
+
+        <!-- Subfilters -->
+        <li ng-repeat="filter in settings.filter | filter : { isSubfilter : true}"
+            class="filterbar__list__item filterbar__sublist"
+            ng-class="{'filterbar__sublist--empty' : !filter.hasChildren()}"
+                >
+                  <span class="link-button__label filterbar__sublist__label">{{filter.label}}
+                      <span class="fa fa-caret-square-o-down"></span>
+                  </span>
+            <ul class="filterbar__sublist__list">
+
+                <!-- No Groups -->
+                <li ng-if="filter.values && !filter.values[0].groupName"
+                    ng-repeat="value in filter.values"
+                    class="filterbar__sublist__list__item">
+                    <label>
+                        <input ng-disabled="state.isUpdating || state.isLoading"
+                               ng-model="value.active"
+                               ng-change="filterChangeHandler(filter)"
+                               type="checkbox"/>
+                        {{value.label}}
+                    </label>
+                </li>
+
+
+            </ul>
+</div>
+
+<div class="filterbar__group filterbar__group--right">
+    <div class="filterbar__item">
+        <input ng-disabled="state.isUpdating || state.isLoading"
+               ng-model="settings.search"
+               type="search"
+               placeholder="Search"/>
+    </div>
+</div>

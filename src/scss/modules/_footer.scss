@@ -1,0 +1,12 @@
+.footer {
+  background: $color-footer-background;
+  bottom: 0;
+  color: #fff;
+  height: $footer-height;
+  left: 0;
+  padding: 0.5em;
+  position: fixed;
+  text-align: right;
+  width: 100%;
+  z-index: map_get($z-stack, footer);
+}

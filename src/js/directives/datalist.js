@@ -6,12 +6,14 @@
  * A datalist is the actual representation of the horizontal separated data.
  * It might contain several datagroups.
  *
- * @restrict A
+ * @restrict E
+ *
+ * @requires datagroups
  * */
 
 
 angular.module('app')
-    .directive('datalist', function () {
+    .directive('datalist', function (datagroups) {
         return {
             restrict: 'E',
             templateUrl: 'templates/datalist.html',
@@ -24,28 +26,42 @@ angular.module('app')
             },
             link: function (scope, element, attr) {
 
+                /**
+                 * @private
+                 * @property
+                 * @type {{groups: Array}}
+                 */
                 var cache = {
                     groups: []
                 };
 
                 /**
                  * @method getDataGroups
-                 * @returns {*}
+                 * @returns {Array}
                  */
                 scope.getDataGroups = function () {
 
-                    var groups = _(scope.data)
-                        .filter(function (dataset) {
-                            return dataset[scope.property] === scope.value;
-                        })
-                        .groupBy(scope.groupBy)
-                        .map(function (group, name) {
+                    var datasets, groups;
+
+                    datasets = _.filter(scope.data, function (dataset) {
+                        return dataset[scope.property] === scope.value;
+                    });
+
+                    groups = _(datasets)
+                        .pluck(scope.groupBy)
+                        .concat(datagroups)
+                        .unique()
+                        .map(function (groupName) {
                             return {
-                                name: name,
-                                data: group
+                                name: groupName,
+                                data: _.filter(datasets, function (dataset) {
+                                    return dataset[scope.groupBy] === groupName;
+                                })
                             }
                         })
+                        .sortBy('name')
                         .value();
+
 
                     if (cache.groups && angular.equals(cache.groups, groups)) {
                         return cache.groups;

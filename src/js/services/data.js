@@ -9,18 +9,59 @@
  * @requires $log
  * @requires server
  * @requires _
+ * @requires datastages
+ * @requires datagroups
  *
  * */
 
 
 angular.module('app')
-    .factory('data', function ($q, $log, server, _) {
+    .factory('data', function ($q, $log, server, _, datastages, datagroups) {
 
         var module = {};
 
+        /**
+         * @private
+         * @property cache
+         * @type {{groups: Array, stages: Array}}
+         */
         var cache = {
+            groups: [],
             stages: []
         };
+
+
+        /**
+         * @private
+         * @method getPropertyValuesFromItems
+         * @param {String} propertyName
+         * @param {Array} constantValues
+         * @returns {*}
+         */
+        function getPropertyValuesFromItems(propertyName, constantValues) {
+
+            var values = _(module.items)
+                .pluck(propertyName)
+                .concat(constantValues) // Add the static stages
+                .sort()
+                .unique()
+                .map(function (value) {
+                    return {
+                        key: _.kebabCase(value),
+                        title: value
+                    }
+                })
+                .value();
+
+            // Return the cached version if there hasn't been any diff
+            if (cache[propertyName] && angular.equals(cache[propertyName], values)) {
+                return cache[propertyName];
+            }
+            else {
+                cache[propertyName] = values;
+                return values;
+            }
+        }
 
         /**
          * @property items
@@ -32,7 +73,14 @@ angular.module('app')
          * @property stages
          * @type {Array}
          */
-        module.stages = [];
+        module.stages = datastages;
+
+        /**
+         * @property groups
+         * @type {Array}
+         */
+        module.groups = datagroups;
+
 
         /**
          * @method fetch
@@ -52,29 +100,69 @@ angular.module('app')
          * @returns {Array}
          */
         module.getStages = function (propertyName) {
+            return getPropertyValuesFromItems(propertyName, module.stages);
+        };
 
-            var stages = _(module.items)
-                .pluck(propertyName)
-                .concat(module.stages) // Add the static stages
-                .sort()
-                .unique()
-                .map(function (stage) {
-                    return {
-                        key: _.kebabCase(stage),
-                        title: stage
-                    }
+        /**
+         * @method getGroups
+         * @param {String} propertyName
+         * @returns {Array}
+         */
+        module.getGroups = function (propertyName) {
+            return getPropertyValuesFromItems(propertyName, module.groups);
+        };
+
+
+        /**
+         * Adds a dataset to the collection
+         *
+         * @method add
+         * @param dataset
+         */
+        module.add = function (dataset) {
+            //TODO implement add functionality (non-persistent)
+        };
+
+        /**
+         * Updates a dataset
+         *
+         * @method update
+         * @param {Object} dataset
+         * @returns {Promise}
+         */
+        module.update = function (dataset) {
+
+            $log.log('data::update(', dataset, ')');
+
+            var index = _.findIndex(module.items, {id: dataset.id}),
+                cache = angular.copy(module.items[index]);
+
+            // Updating locally
+            module.items[index] = _.assign(module.items[index], dataset);
+
+            // Let's assume that the validation on the server is not
+            // that strict, the uptime is great and we won't get any errors
+            // while updating that often
+            return server.update('datasets', module.items[index])
+                .then(function (dataset) {
+                    module.items[index] = dataset;
                 })
-                .value();
+                .catch(function (err) {
+                    $log.error(err);
+                    module.items[index] = cache;
+                })
+                .finally(function () {
+                    return module.items;
+                })
+        };
 
-            // Return the cached version if there hasn't been any diff
-            if (cache.stages && angular.equals(cache.stages, stages)) {
-                return cache.stages;
-            }
-            else {
-                cache.stages = stages;
-                return stages;
-            }
 
+        /**
+         * @method remove
+         * @param {Object} dataset
+         */
+        module.remove = function (dataset) {
+            //TODO implement remove functionality
         };
 
         return module;

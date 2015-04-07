@@ -1,0 +1,62 @@
+.filterbar {
+  font-size: 0.8em;
+  user-select: none;
+
+  &__group {
+    display: inline-block;
+
+    &--right {
+      float: right;
+    }
+  }
+
+  &__label {
+    margin-right: 0.75em;
+  }
+
+  &__list {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      display: inline-block;
+      margin: 0 0.8em 0 0;
+      position: relative;
+    }
+  }
+
+  &__sublist {
+
+    &--empty {
+      .filterbar__sublist__list {
+        display: none;
+      }
+    }
+
+    &:hover {
+      .filterbar__sublist__list {
+        display: block;
+      }
+    }
+
+    &__label {
+      cursor: pointer;
+    }
+    &__list {
+      background: $color-darkest;
+      display: none;
+      padding: 1em;
+      list-style: none;
+      min-width: 13em;
+      margin: 0;
+      position: absolute;
+
+      &__item {
+        cursor: pointer !important;
+      }
+    }
+  }
+
+}

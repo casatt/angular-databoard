@@ -1,10 +1,63 @@
 dataset,
 .dataset {
+
+  $body-height: 10em;
+  $footer-height: 2em;
+
   background: #fff;
   border: 1px solid #f0f0f0;
   border-radius: 0.25em;
   cursor: grab;
   display: block;
-  margin-bottom: 1em;
+
   padding: 0.5em;
+
+  &.js-dragging {
+    background: $color-highlight-brighter;
+    border-color: $color-highlight-darker;
+  }
+
+  &__body,
+  &__footer {
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+  }
+
+  &:first-child,
+  &:hover {
+    .dataset__body {
+      border-top: 1px solid $color-brightest;
+      margin-top: 0.2em;
+      padding-top: 0.5em;
+      max-height: $body-height;
+    }
+    .dataset__footer {
+      max-height: $footer-height;
+    }
+  }
+
+  .dataset__body,
+  .dataset__footer {
+    max-height: 0;
+  }
+
+  &__header {
+  }
+
+  &__body {
+    border-top: 1px solid transparent;
+  }
+
+  &__footer {
+    text-align: right;
+  }
+
+  &--placeholder {
+    border: 1px dashed $color-brighter;
+    border-radius: $default-border-radius;
+    color: $color-brighter;
+    font-size: 2em;
+    padding: 0.1em;
+    text-align: center;
+  }
 }
