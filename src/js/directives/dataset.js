@@ -57,7 +57,7 @@ angular.module('app')
 
                             // $log.log('dataset::dragstart');
                             e.dataTransfer.effectAllowed = 'move';
-                            e.dataTransfer.setData('text/plain', id);
+                            e.dataTransfer.setData('text', id);
 
                             // Inform everyone about the dragstart
                             $rootScope.$broadcast('dataset:dragstart', {id: id, group: group, stage: stage});

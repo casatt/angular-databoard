@@ -23,7 +23,7 @@ datagroup,
     top: 0;
     left: 0;
     width: 100%;
-
+    z-index: map_get($z-stack, datagroup-overlay);
   }
 
   &.js-droppable {

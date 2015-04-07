@@ -7,10 +7,16 @@ dataset,
   background: #fff;
   border: 1px solid #f0f0f0;
   border-radius: 0.25em;
+  cursor: move; // IE fallback
   cursor: grab;
   display: block;
-
   padding: 0.5em;
+
+  /* IE Bug
+  @see https://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+  */
+  height: auto;
+  min-height: 100% !important;
 
   &.js-dragging {
     background: $color-highlight-brighter;

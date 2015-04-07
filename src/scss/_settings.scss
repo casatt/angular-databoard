@@ -13,17 +13,10 @@ $color-footer-background: $color-darkest;
 $color-highlight-darker: rgba(197, 165, 80, 0.47);
 $color-highlight-brighter: rgba(254, 213, 103, 0.47);
 
-$dataset-state-colors: (
-        default : #fff,
-        error : rgba(242, 222, 222, 1),
-        yellow: #ffef60,
-        red : #ff0000,
-        green: #559d3d,
-);
-
 $z-stack: (
         header : 1000,
         footer: 9000,
+        datagroup-overlay : 8000,
         main : 500
 );
 

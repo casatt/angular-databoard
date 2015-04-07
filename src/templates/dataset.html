@@ -1,8 +1,6 @@
 <div class="dataset user-profile"
      draggable="true"
-     data-id="{{::data.id}}"
-     ng-dblclick=""
-     ng-class="getStatusClasses(data)">
+     data-id="{{::data.id}}">
 
     <header class="dataset__header">
         <span class="user-profile__data__name user-profile__data__name"><i class="fa fa-user"></i> {{::data.lastname}}, {{::data.firstname}}</span>
@@ -17,7 +15,7 @@
         </div>
 
         <p class="user-profile__data">
-                <span class="user-profile__data__title">{{::data.title}}</span>
+            <span class="user-profile__data__title">{{::data.title}}</span>
                 <span class="user-profile__data__gender">
                 <i class="fa"
                    ng-class="{'fa-female' : data.gender === 'Female', 'fa-male' : data.gender === 'Male'}"></i>
