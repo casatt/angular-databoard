@@ -88,7 +88,7 @@ angular.module('app')
                     if ($window.confirm('Are you sure you want to remove this employee from the board?')) {
                         getIdGroupAndStageFromElement();
 
-                        data.remove({id: eventData.id})
+                        data.remove({id: id})
                             .finally(function () {
                                 scope.$emit('dataset:remove', {id: id});
                             });

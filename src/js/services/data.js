@@ -204,7 +204,18 @@ angular.module('app')
          * @param {Object} dataset
          */
         module.remove = function (dataset) {
-            //TODO implement remove functionality
+            return server.remove('datasets', {id: dataset.id})
+                .then(function () {
+                    _.remove(module.items, function (item) {
+                        return item.id === dataset.id;
+                    });
+                })
+                .catch(function (err) {
+                    $log.error(err);
+                })
+                .finally(function () {
+                    return module.items;
+                })
         };
 
         return module;

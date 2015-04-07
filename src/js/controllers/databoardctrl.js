@@ -204,6 +204,10 @@ angular.module('app')
 
 
         /**
+         * Updating a dataset is not done inside directives (as for add/remove)
+         * as there might be some validation logic necessary later on
+         * that could be implemented in this controller.
+         *
          * @method
          * @param {Object} e
          * @param {Object} eventData

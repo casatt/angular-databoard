@@ -158,6 +158,41 @@ angular.module('app')
             return deferred.promise;
         };
 
+        /**
+         * @method remove
+         * @param {String} route
+         * @param {Object} data
+         */
+        module.remove = function (route, data) {
+
+            var deferred = $q.defer();
+
+            $log.log('server::remove(', route, ':', data, ')');
+
+            if (!route) {
+                deferred.reject('No route passed');
+            }
+            if (!data) {
+                deferred.reject('No data passed');
+            }
+            else {
+                // Mocking here as we have no real http service defined
+                switch (route.toLowerCase()) {
+                    case 'datasets' :
+                        return $timeout(angular.noop, 100 + Math.random() * 1000)
+                            .then(function () {
+                                return true;
+                            });
+                        break;
+                    default :
+                        deferred.reject('Unknown route passed');
+                        break;
+                }
+
+            }
+            return deferred.promise;
+        };
+
         return module;
     });
 
