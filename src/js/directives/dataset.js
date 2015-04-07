@@ -10,11 +10,12 @@
  * @requires $log
  * @requires $rootScope
  * @requires $window
+ * @requires data
  * */
 
 
 angular.module('app')
-    .directive('dataset', function ($log, $rootScope, $window) {
+    .directive('dataset', function ($log, $rootScope, $window, data) {
         return {
             restrict: 'E',
             replace: true,
@@ -86,7 +87,11 @@ angular.module('app')
                 scope.remove = function () {
                     if ($window.confirm('Are you sure you want to remove this employee from the board?')) {
                         getIdGroupAndStageFromElement();
-                        scope.$emit('dataset:remove', {id: id});
+
+                        data.remove({id: eventData.id})
+                            .finally(function () {
+                                scope.$emit('dataset:remove', {id: id});
+                            });
                     }
 
                 }

@@ -11,12 +11,13 @@
  * @requires _
  * @requires datastages
  * @requires datagroups
+ * @requires ngDialog
  *
  * */
 
 
 angular.module('app')
-    .factory('data', function ($q, $log, server, _, datastages, datagroups) {
+    .factory('data', function ($q, $log, server, _, datastages, datagroups, ngDialog) {
 
         var module = {};
 
@@ -114,13 +115,54 @@ angular.module('app')
 
 
         /**
-         * Adds a dataset to the collection
+         * Adds a dataset to the collection (non-persistent)
          *
          * @method add
-         * @param dataset
+         * @param {String} stage
+         * @param {String} group
          */
-        module.add = function (dataset) {
-            //TODO implement add functionality (non-persistent)
+        module.add = function (stage, group) {
+
+            // Open a modal for the input form
+            return ngDialog.open({
+                template: 'partials/addemployee.html',
+                controller: function ($scope, datagroups, datastages) {
+
+                    $scope.options = {
+                        teams: datagroups,
+                        locations: datastages
+                    };
+
+                    $scope.employee = {
+                        team: group,
+                        location: stage
+                    }
+                }
+            }).closePromise.then(function (result) {
+
+                    // Some weird way to determine if the modal was dismissed or confirmed
+                    // I prefer the way of angular-ui bootstrap, but this comes with a lot of
+                    // other components not needed in this project, for details of this modal plugin:
+                    // @see https://github.com/likeastore/ngDialog#api
+                    if (result.value && result.value !== '$closeButton' && result.value !== '$document' && result.value !== '$escape') {
+
+                        return server.create('datasets', result.value)
+                            .then(function (dataset) {
+                                module.items.push(dataset);
+                                return dataset;
+                            })
+                            .catch(function (err) {
+                                $log.error(err);
+                            })
+                            .finally(function () {
+                                return module.items;
+                            })
+
+                    }
+
+                });
+
+
         };
 
         /**
@@ -166,5 +208,6 @@ angular.module('app')
         };
 
         return module;
-    });
+    })
+;
 

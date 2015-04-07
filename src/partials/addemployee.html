@@ -1,0 +1,142 @@
+<form class="form" name="form">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xs-6 formgroup">
+                <label for="firstname">Firstname</label>
+                <input type="text"
+                       ng-model="employee.firstname"
+                       class="form-control"
+                       id="firstname"
+                       placeholder="Firstname"
+                       required>
+            </div>
+            <div class="col-xs-6 formgroup">
+                <label for="firstname">Lastname</label>
+                <input type="text"
+                       ng-model="employee.lastname"
+                       class="form-control"
+                       id="lastname"
+                       placeholder="Lastname"
+                       required>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 formgroup form__group">
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio"
+                               ng-model="employee.gender"
+                               name="gender"
+                               required
+                               value="Male">
+                        Male
+                    </label>
+                </div>
+                <div class="radio-inline">
+                    <label>
+                        <input type="radio"
+                               ng-model="employee.gender"
+                               name="gender"
+                               value="Female">
+                        Female
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 formgroup">
+                <label for="title">Team*</label>
+                <select class="form-control"
+                        ng-model="employee.team"
+                        ng-options="team as team for team in options.teams"
+                        required>
+                </select>
+            </div>
+
+            <div class="col-xs-6 formgroup">
+                <label for="age">Location*</label>
+                <select class="form-control"
+                        ng-model="employee.location"
+                        ng-options="location as location for location in options.locations"
+                        required>
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-6 formgroup">
+                <label for="title">Title</label>
+                <input type="text"
+                       ng-model="employee.title"
+                       class="form-control"
+                       id="title"
+                       placeholder="Title">
+            </div>
+
+            <div class="col-xs-6 formgroup">
+                <label for="age">Age</label>
+                <input type="number"
+                       ng-model="employee.age"
+                       class="form-control"
+                       id="age"
+                       placeholder="Age"
+                       min="16">
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-6 formgroup">
+                <label for="email">E-Mail</label>
+                <input type="email"
+                       ng-model="employee.email"
+                       class="form-control"
+                       id="email"
+                       placeholder="E-Mail">
+            </div>
+            <div class="col-xs-6 formgroup">
+                <label for="phone">Phone</label>
+                <input type="tel"
+                       ng-model="employee.phone"
+                       class="form-control"
+                       id="phone"
+                       placeholder="Phone"
+                        >
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="form__footer col-xs-12">
+                <button type="submit"
+                        class="button button--confirm"
+                        ng-disabled="!form.$valid"
+                        ng-click="closeThisDialog(employee)">
+                    <i class="fa fa-plus"></i> Add
+                </button>
+
+                <button type="submit"
+                        class="button button--cancel"
+                        ng-click="closeThisDialog()">
+                    <i class="fa fa-ban"></i> Cancel
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</form>

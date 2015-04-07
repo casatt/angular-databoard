@@ -115,6 +115,49 @@ angular.module('app')
             return deferred.promise;
         };
 
+
+        /**
+         * @method create
+         * @param {String} route
+         * @param {Object} data
+         */
+        module.create = function (route, data) {
+
+            var deferred = $q.defer();
+
+            $log.log('server::create(', route, ':', data, ')');
+
+            if (!route) {
+                deferred.reject('No route passed');
+            }
+            if (!data) {
+                deferred.reject('No data passed');
+            }
+            else {
+                // If no id is passed, generate one
+                // Normally this would/could be done by a RESTful server api via
+                // a post request, but this will do for the demo
+                if (!data.id) {
+                    data.id = chance.hash({length: 16});
+                }
+
+                // Mocking here as we have no real http service defined
+                switch (route.toLowerCase()) {
+                    case 'datasets' :
+                        return $timeout(angular.noop, 100 + Math.random() * 1000)
+                            .then(function () {
+                                return data;
+                            });
+                        break;
+                    default :
+                        deferred.reject('Unknown route passed');
+                        break;
+                }
+
+            }
+            return deferred.promise;
+        };
+
         return module;
     });
 

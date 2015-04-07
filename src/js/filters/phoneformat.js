@@ -16,6 +16,10 @@ angular.module('app')
 
             type = type || 'link';
 
+            if (!input) {
+                return;
+            }
+
             switch (type.toLowerCase()) {
                 default:
                 case 'link' :

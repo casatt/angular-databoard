@@ -1,0 +1,20 @@
+.button {
+  border: none;
+  border-radius: $default-border-radius;
+  display: inline-block;
+  padding: 0.2em 1em;
+  transition: opacity 0.3s ease-out;
+
+  &[disabled] {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+  }
+
+  &--confirm {
+    background: rgba(9, 131, 11, 0.45);
+  }
+
+  &--cancel {
+    background: rgba(206, 33, 24, 0.45);
+  }
+}

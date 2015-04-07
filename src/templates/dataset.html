@@ -28,10 +28,10 @@
 
         <p class="user-profile__contact">
             <a draggable="false"
-               ng-href="mailto:{{::data.email}}"
+               ng-href="mailto:{{::data.email || 'None'}}"
                class="user-profile__contact__email">{{::data.email}}</a>
             <a draggable="false"
-               ng-href="tel:{{::data.phone | phoneFormat : 'link'}}"
+               ng-href="tel:{{::data.phone | phoneFormat : 'link' || 'None'}}"
                class="user-profile__contact__phone">{{::data.phone}}</a>
         </p>
 

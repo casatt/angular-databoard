@@ -7,11 +7,12 @@
  *
  * @restrict E
  * @requires $log
+ * @requires data
  * */
 
 
 angular.module('app')
-    .directive('datagroup', function ($log) {
+    .directive('datagroup', function ($log, data) {
         return {
             restrict: 'E',
             templateUrl: 'templates/datagroup.html',
@@ -89,7 +90,18 @@ angular.module('app')
                             break;
 
                     }
-                })
+                });
+
+
+                /**
+                 * @method add
+                 */
+                scope.add = function () {
+                    getGroupAndStagePropertyFromElement();
+                    data.add(stage, group).then(function (dataset) {
+                        scope.$emit('dataset:add', dataset);
+                    });
+                }
             }
         };
     });

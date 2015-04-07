@@ -1,7 +1,7 @@
 dataset,
 .dataset {
 
-  $body-height: 10em;
+  $body-height: 15em;
   $footer-height: 2em;
 
   background: #fff;
@@ -52,12 +52,23 @@ dataset,
     text-align: right;
   }
 
-  &--placeholder {
-    border: 1px dashed $color-brighter;
+  &__additional {
+    border: 1px solid #f0f0f0;
+    border-top: none;
     border-radius: $default-border-radius;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     color: $color-brighter;
+    cursor: pointer;
     font-size: 2em;
     padding: 0.1em;
     text-align: center;
+
+    &--placeholder {
+      border-top: 1px solid #f0f0f0;
+      border-top-left-radius: $default-border-radius;
+      border-top-right-radius: $default-border-radius;
+    }
   }
+
 }

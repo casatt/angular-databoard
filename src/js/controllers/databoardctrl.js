@@ -228,19 +228,23 @@ angular.module('app')
          * @method
          * @param {Object} e
          * @param {Object} eventData
+         * @listens dataset:add
+         */
+        $scope.$on('dataset:add', function (e, eventData) {
+            updateFilters();
+            $scope.datasets = data.items;
+        });
+
+
+        /**
+         * @method
+         * @param {Object} e
+         * @param {Object} eventData
          * @listens dataset:remove
          */
         $scope.$on('dataset:remove', function (e, eventData) {
-
-            if (!eventData || !eventData.id) {
-                return;
-            }
-            $scope.state.isUpdating = true;
-
-            data.remove({id: eventData.id})
-                .finally(function () {
-                    $scope.state.isUpdating = false;
-                });
+            updateFilters();
+            $scope.datasets = data.items;
         });
 
 
