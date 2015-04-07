@@ -93,6 +93,20 @@ gulp.task('usemin', function () {
         .pipe(gulp.dest(CONFIG.DIST));
 });
 
+
+/**
+ * TEMPLATES TASK
+ */
+gulp.task('templates', function () {
+    return gulp.src([
+        CONFIG.SOURCE + '/**/*.html',
+        '!' + CONFIG.SOURCE + '/*.html',
+        '!' + CONFIG.SOURCE + '/bower_components/**/*.html'
+    ])
+        .pipe($.minifyHtml({empty: true}))
+        .pipe(gulp.dest(CONFIG.DIST));
+});
+
 /**
  * CLEAN TASK
  */
@@ -104,7 +118,7 @@ gulp.task('clean', function (cb) {
 /**
  * BUILD TASK
  */
-gulp.task('build', ['scss', 'usemin']);
+gulp.task('build', ['scss', 'usemin', 'templates']);
 
 
 /**
