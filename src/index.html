@@ -5,6 +5,7 @@
     <title>angular-databoard</title>
     <link rel="stylesheet" href="css/main.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 </head>
 
 <body ng-app="app"
@@ -36,7 +37,6 @@
     <span ng-if="state.isUpdating"><i class="fa fa-spin fa-circle-o-notch"></i> Updating...</span>
 </footer>
 
-
 <!-- build:js js/main.js -->
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/chance/chance.js"></script>
@@ -55,6 +55,16 @@
 <script src="js/services/server.js"></script>
 <script src="js/services/data.js"></script>
 <!-- endbuild -->
+
+<noscript class="global-message global-message--error">
+    You need to enable JavaScript for this application. Visit: <a href="http://activatejavascript.org/">http://activatejavascript.org/</a>
+    for help.
+</noscript>
+
+<div class="global-message global-message--warning">
+    Your browser does not support the required features. Visit <a
+        href="http://browsehappy.com/">http://browsehappy.com/</a> for help.
+</div>
 
 </body>
 </html>

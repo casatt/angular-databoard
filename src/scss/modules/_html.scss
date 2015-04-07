@@ -1,3 +1,9 @@
 html {
   height: 100%;
+
+  &.no-flexbox .global-message.global-message--warning,
+  &.no-draganddrop .global-message.global-message--warning {
+    display: block;
+  }
+
 }

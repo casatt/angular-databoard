@@ -1,0 +1,24 @@
+.global-message {
+  color: #fff;
+  left: 0;
+  padding: 0.5em 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: map_get($z-stack, global-message);
+
+  a {
+    &:link, &:visited, &:hover, &:active {
+      color: inherit;
+    }
+  }
+
+  &--error {
+    background: rgba(232, 113, 87, 0.67);
+  }
+
+  &--warning {
+    background: rgba(195, 161, 72, 1);
+    display: none;
+  }
+}

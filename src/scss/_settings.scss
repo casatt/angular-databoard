@@ -14,6 +14,7 @@ $color-highlight-darker: rgba(197, 165, 80, 0.47);
 $color-highlight-brighter: rgba(254, 213, 103, 0.47);
 
 $z-stack: (
+        global-message: 1100,
         header : 1000,
         footer: 9000,
         datagroup-overlay : 8000,
