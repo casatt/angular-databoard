@@ -126,7 +126,7 @@ angular.module('app')
             // Open a modal for the input form
             return ngDialog.open({
                 template: 'partials/addemployee.html',
-                controller: function ($scope, datagroups, datastages) {
+                controller: ['$scope', 'datagroups', 'datastages', function ($scope, datagroups, datastages) {
 
                     $scope.options = {
                         teams: datagroups,
@@ -137,7 +137,7 @@ angular.module('app')
                         team: group,
                         location: stage
                     }
-                }
+                }]
             }).closePromise.then(function (result) {
 
                     // Some weird way to determine if the modal was dismissed or confirmed
