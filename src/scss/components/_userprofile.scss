@@ -1,0 +1,53 @@
+.user-profile {
+  @extend %clearfix;
+  user-select: none;
+
+  &__picture {
+    background: rgb(239, 239, 239);
+    display: block;
+    float: left;
+    height: 90px;
+    margin-right: 1em;
+    overflow: hidden;
+    text-align: center;
+    width: 80px;
+
+    &__placeholder {
+      color: $color-brighter;
+      display: none;
+      font-size: 8em;
+      position: relative;
+      top: -0.1em;
+    }
+
+    // If there is no user image display the placeholder
+    &--empty .user-profile__picture__placeholder {
+      display: inline-block;
+    }
+
+  }
+
+  &__data {
+    margin: 0;
+    &__name {
+      font-size: 1.2em;
+      display: block;
+      margin-bottom: 0.1em;
+    }
+    &__gender {
+    }
+    &__age {
+    }
+  }
+
+  &__contact {
+    margin: 1em 0 0 0;
+
+    &__email {
+      display: block;
+    }
+    &__phone {
+      display: block;
+    }
+  }
+}

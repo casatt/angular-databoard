@@ -3,7 +3,8 @@
  * @name app.directive:datalist
  *
  * @description
- * _Please update the description and restriction._
+ * A datalist is the actual representation of the horizontal separated data.
+ * It might contain several datagroups.
  *
  * @restrict A
  * */

@@ -1,11 +1,8 @@
 databox,
 .databox {
 
-  $background: #f1f5f6;
-  $width: 20em;
-
-  background: $background;
-  border: 1px solid $color-border-default;
+  background: $color-brightest;
+  border: 1px solid $color-brighter;
   border-radius: $default-border-radius;
   display: flex;
   flex: 1 0 auto;
@@ -26,7 +23,7 @@ databox,
   }
 
   &__header {
-    color: $color-text-default;
+    border-bottom: 1px solid $color-brighter;
     font-weight: bold;
     padding: 1em 0 1em 0.7em;
   }

@@ -2,7 +2,11 @@ datagroup,
 .datagroup {
   display: block;
 
-  &::before{
+  &::before {
     content: attr(data-group-name);
+    font-weight: 700;
+    margin: 0 0 0.2em 0.2em;
+    display: inline-block;
+    letter-spacing: 0.1em;
   }
 }

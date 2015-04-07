@@ -3,7 +3,7 @@
  * @name app.directive:datagroup
  *
  * @description
- * _Please update the description and restriction._
+ * Represents a group of data that is separated vertically.
  *
  * @restrict A
  * */

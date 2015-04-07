@@ -1,4 +1,7 @@
 main {
+  display: block;
   flex-grow: 1;
   flex-shrink: 0;
+  padding-top: $header-height;
+  width: 100%;
 }

@@ -3,7 +3,8 @@
  * @name app.directive:databox
  *
  * @description
- * _Please update the description and restriction._
+ * Represents a container for
+ * a horizontal separation of data.
  *
  * @restrict A
  * */

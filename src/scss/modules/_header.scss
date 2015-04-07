@@ -1,2 +1,9 @@
-header {
+.header {
+  background: $color-header-background;
+  color: #fff;
+  height: $header-height;
+  padding: 0.5em;
+  position: fixed;
+  width: 100%;
+  z-index: map_get($z-stack, header);
 }

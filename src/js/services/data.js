@@ -2,9 +2,13 @@
  * @ngdoc service
  * @name app.data
  * @description
- * _Please update the description and dependencies._
+ * The service that is used for all
+ * the CRUD-operations in the databoard.
  *
- * @requires $replace_me
+ * @requires $q
+ * @requires $log
+ * @requires server
+ * @requires _
  *
  * */
 
@@ -36,9 +40,10 @@ angular.module('app')
          */
         module.fetch = function () {
             $log.log('data::fetch()');
-            return server.fetch('datasets').then(function (datasets) {
-                return module.items = datasets;
-            });
+            return server.fetch('datasets')
+                .then(function (datasets) {
+                    return module.items = datasets;
+                });
         };
 
         /**

@@ -1,21 +1,40 @@
 <div class="dataset"
-    draggable="true"
-    data-id="{{::data.id}}"
-    ng-dblclick=""
-    ng-class="getStatusClasses(data)">
+     draggable="true"
+     data-id="{{::data.id}}"
+     ng-dblclick=""
+     ng-class="getStatusClasses(data)">
 
     <header class="dataset__header">
     </header>
 
     <div class="dataset__body">
-        <i class="fa" ng-class="{'fa-female' : data.gender === 'Female', 'fa-male' : data.gender === 'Male'}"></i>
-        {{::data.lastname}}, {{::data.firstname}}
-        ({{::data.age}})
 
-        <p>
-            {{data.email}} <br/>
-            {{data.phone}}
-        </p>
+
+        <div class="user-profile">
+            <div class="user-profile__picture user-profile__picture--empty">
+                <span class="user-profile__picture__placeholder">
+                    <i class="fa fa-user"></i>
+                </span>
+            </div>
+
+            <p class="user-profile__data">
+                <span class="user-profile__data__name">{{::data.lastname}}, {{::data.firstname}}</span>
+                <span class="user-profile__data__gender">
+                <i class="fa"
+                   ng-class="{'fa-female' : data.gender === 'Female', 'fa-male' : data.gender === 'Male'}"></i>
+                    {{::data.gender}},
+                </span>
+                <span class="user-profile__data__age">{{::data.age}}</span>
+            </p>
+
+            <p class="user-profile__contact">
+                <a ng-href="mailto:{{::data.email}}" class="user-profile__contact__email">{{::data.email}}</a>
+                <a ng-href="tel:{{::data.phone | phoneFormat : 'link'}}"
+                   class="user-profile__contact__phone">{{::data.phone}}</a>
+            </p>
+
+        </div>
+
     </div>
 
     <footer class="dataset__footer">

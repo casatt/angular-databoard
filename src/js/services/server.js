@@ -2,9 +2,13 @@
  * @ngdoc service
  * @name app.server
  * @description
- * _Please update the description and dependencies._
+ * The service that handles all the HTTP communication (XHR).
+ * As we are dealing with mock-data here, it will not send any requests but create mock-data using chance.js.
+ * @see http://chancejs.com/
  *
- * @requires $replace_me
+ * @requires $q
+ * @requires $log
+ * @requires chance
  *
  * */
 
@@ -13,12 +17,6 @@ angular.module('app')
     .factory('server', function ($q, $log, chance) {
 
         var module = {};
-
-        //TODO get stages from employees
-        // Creating mock data
-        var stages = (function () {
-            return [{key: 'foo', title: 'Foo'}, {key: 'bar', title: 'Bar'}, {key: 'baz', title: 'Baz'}]
-        })();
 
 
         /**

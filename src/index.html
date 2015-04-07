@@ -11,14 +11,18 @@
       ng-controller="DataBoardCtrl"
       ng-init="init()">
 
-<!--header>
+<header class="header">
     <div class="filterbar">
+        Filter:
+
+        <button class="link-button" ng-click="addStage('Foo')">
+            <i class="fa fa-plus"></i>
+            <span class="link-button__label">Add a location</span>
+        </button>
+
     </div>
 
-    <button class="link-button" ng-click="addStage('Foo')">
-        <span class="link-button__label">Add a location</span>
-    </button>
-</header-->
+</header>
 
 <main>
     <div class="board">
@@ -30,9 +34,6 @@
     </div>
 </main>
 
-<!--footer>
-    Footer
-</footer-->
 
 <!-- build:js js/main.js -->
 <script src="bower_components/angular/angular.js"></script>
@@ -44,6 +45,7 @@
 <script src="js/directives/datalist.js"></script>
 <script src="js/directives/datagroup.js"></script>
 <script src="js/directives/dataset.js"></script>
+<script src="js/filters/phoneformat.js"></script>
 <script src="js/services/server.js"></script>
 <script src="js/services/data.js"></script>
 <!-- endbuild -->
